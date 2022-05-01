@@ -1,0 +1,16 @@
+<!-- entries/templates/entries/entry_form.html -->
+
+{% extends "entries/base.html" %}
+{% block content %}
+    <form method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn-secondary"  value="Save">
+    </form>
+    {% if entry %}
+        <a href="{% url 'entry-detail' entry.id %}"><button type= "button" class= "btn-primary">Cancel</button></a>
+    {% else %}
+        <a href="{% url 'entry-list' %}">
+        	<button type= "button" class= "btn-primary">Cancel</button>
+        </a>
+    {% endif %}
+{% endblock %}
